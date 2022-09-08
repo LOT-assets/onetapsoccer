@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: one-tap-soccer
+  namespace: onetapsoccer
+  labels:
+    app: one-tap-soccer
+    app.kubernetes.io/component: one-tap-soccer
+    app.kubernetes.io/instance: one-tap-soccer
+    app.kubernetes.io/name: one-tap-soccer
+    app.kubernetes.io/part-of: metrics-exporter-app
+    app.openshift.io/runtime: quarkus
+    app.openshift.io/runtime-namespace: onetapsoccer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: one-tap-soccer
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: one-tap-soccer
+        deployment: one-tap-soccer
+    spec:
+      containers:
+        - name: one-tap-soccer
+          image: >-
+            quay.io/vflorent/one-tap-soccer
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

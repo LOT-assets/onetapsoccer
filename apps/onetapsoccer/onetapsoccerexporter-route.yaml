@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: metrics-exporter-jvm
+  namespace: onetapsoccer
+  labels:
+    app: metrics-exporter-jvm
+    app.kubernetes.io/component: metrics-exporter-jvm
+    app.kubernetes.io/instance: metrics-exporter-jvm
+    app.kubernetes.io/name: metrics-exporter-jvm
+    app.kubernetes.io/part-of: metrics-exporter-app
+    app.openshift.io/runtime-version: latest
+spec:
+  to:
+    kind: Service
+    name: metrics-exporter-jvm
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

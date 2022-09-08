@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: one-tap-soccer
+  namespace: onetapsoccer
+  labels:
+    app: one-tap-soccer
+    app.kubernetes.io/component: one-tap-soccer
+    app.kubernetes.io/instance: one-tap-soccer
+    app.kubernetes.io/name: one-tap-soccer
+    app.kubernetes.io/part-of: metrics-exporter-app
+    app.openshift.io/runtime-version: latest
+spec:
+  to:
+    kind: Service
+    name: one-tap-soccer
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: metrics-exporter-jvm
+  namespace: onetapsoccer
+  labels:
+    app: metrics-exporter-jvm
+    app.kubernetes.io/component: metrics-exporter-jvm
+    app.kubernetes.io/instance: metrics-exporter-jvm
+    app.kubernetes.io/name: metrics-exporter-jvm
+    app.kubernetes.io/part-of: metrics-exporter-app
+    app.openshift.io/runtime-version: latest
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+    - name: 8778-tcp
+      protocol: TCP
+      port: 8778
+      targetPort: 8778
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: metrics-exporter-jvm
+    deployment: metrics-exporter-jvm

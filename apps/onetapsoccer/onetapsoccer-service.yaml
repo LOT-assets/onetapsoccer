@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: one-tap-soccer
+  namespace: onetapsoccer
+  labels:
+    app: one-tap-soccer
+    app.kubernetes.io/component: one-tap-soccer
+    app.kubernetes.io/instance: one-tap-soccer
+    app.kubernetes.io/name: one-tap-soccer
+    app.kubernetes.io/part-of: metrics-exporter-app
+    app.openshift.io/runtime-version: latest
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: one-tap-soccer
+    deployment: one-tap-soccer
