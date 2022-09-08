@@ -25,8 +25,11 @@ spec:
     spec:
       containers:
         - name: metrics-exporter-jvm
+          env:
+          - name: PROMETHEUS_HOST
+            value: "my-monitoring.host"
           image: >-
-            image-registry.openshift-image-registry.svc:5000/onetapsoccer/metrics-exporter-jvm@sha256:66004593ed85ac3d54355247ed84a388f310889edc16b624c54b4f65f9165584
+            quay.io/jcepedav/metrics-exporter-jvm
           ports:
             - containerPort: 8080
               protocol: TCP
