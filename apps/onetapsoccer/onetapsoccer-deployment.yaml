@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/component: one-tap-soccer
     app.kubernetes.io/instance: one-tap-soccer
     app.kubernetes.io/name: one-tap-soccer
-    app.kubernetes.io/part-of: metrics-exporter-app
+    app.kubernetes.io/part-of: onetapsoccer-app
     app.openshift.io/runtime: quarkus
     app.openshift.io/runtime-namespace: onetapsoccer
 spec:

@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/component: metrics-exporter-jvm
     app.kubernetes.io/instance: metrics-exporter-jvm
     app.kubernetes.io/name: metrics-exporter-jvm
-    app.kubernetes.io/part-of: metrics-exporter-app
+    app.kubernetes.io/part-of: onetapsoccer-app
     app.openshift.io/runtime: quarkus
     app.openshift.io/runtime-namespace: onetapsoccer
 spec:
@@ -29,7 +29,7 @@ spec:
           - name: PROMETHEUS_HOST
             value: "my-monitoring.host"
           image: >-
-            quay.io/jcepedav/metrics-exporter-jvm
+            quay.io/vflorent/metrics-exporter-jvm
           ports:
             - containerPort: 8080
               protocol: TCP
