@@ -7,3 +7,4 @@ resources:
 - onetapsoccerexporter-deployment.yaml
 - onetapsoccerexporter-route.yaml
 - onetapsoccerexporter-service.yaml
+- pod-monitor.yaml

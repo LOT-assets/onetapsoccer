@@ -27,7 +27,7 @@ spec:
         - name: metrics-exporter-jvm
           env:
           - name: PROMETHEUS_HOST
-            value: "my-monitoring.host"
+            value: "prometheus-operated.my-monitoring:9090"
           image: >-
             quay.io/jcepedav/metrics-exporter-jvm
           ports:
